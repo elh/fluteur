@@ -7,13 +7,16 @@ import yaml
 import random
 from dotenv import load_dotenv
 from git import Repo
+from github import Github
 import openai
 
 """
 write generates a new post in a new file and creates a new commit
 
-Usage: python write.py [-p prompt] [-c]
+Usage: python write.py [--prompt prompting/poem.yml] [--commit] [--pull]
 """
+
+REPO = "elh/pages-test"
 
 def sanitize_url(input):
   alphanumeric_chars = re.sub(r'\W+', ' ', input)
@@ -90,7 +93,15 @@ date:   {date} -0700
     origin = repo.remote(name='origin')
     origin.push(sanitized_title).raise_if_error()
 
-    # TODO: create github pull request
+    g = Github(os.getenv('GH_TOKEN'))
+    repo = g.get_repo(REPO)
+
+    repo.create_pull(
+      title=f"Add \"{title}\"",
+      body="",
+      head=sanitized_title,
+      base="main"
+    )
 
 if __name__ == "__main__":
   main()
