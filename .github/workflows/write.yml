@@ -1,6 +1,9 @@
 name: write
 
-on: workflow_dispatch
+on:
+  schedule:
+    - cron: '0 16 * * *'
+  workflow_dispatch:
 
 jobs:
   write:
@@ -20,3 +23,10 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: python write.py --pull
+    # Doing in the same action because Github Actions do not trigger subsequent actions
+    # limitation of using automatic secrets.GITHUB_TOKEN.
+    - name: Merge
+      uses: "pascalgn/automerge-action@v0.15.6"
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        MERGE_LABELS: ""
