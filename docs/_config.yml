@@ -23,11 +23,16 @@ email: ""
 description: "⨳"
 baseurl: "/fluteur" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
+github_username: elh
 
 # Build settings
 remote_theme: patdryburgh/hitchens@0.7.2 # amazing theme!
 plugins:
   - jekyll-feed
+  - jekyll-paginate
+
+paginate: 10
+paginate_path: "/page/:num/"
 
 hide_search: true
 hide_credits: true
