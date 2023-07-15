@@ -1,0 +1,10 @@
+$brand-color:         #fafafa;                 // custom: try white on white
+$highlight:           darken($brand-color, 10%); // custom: because brand color is white now
+$text-color:          #0b0404;
+$muted-text-color:    #0b0404;                 // custom: use same color as text-color
+$font-family:         "EB Garamond", Garamond, "Times New Roman", serif;
+
+$on-bigphone:         375px;
+$on-tablet:           768px;
+$on-laptop:           960px;
+$on-desktop:          1200px;

@@ -25,9 +25,7 @@ baseurl: "/fluteur" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
-# theme: minima
-# theme: hitchens-theme
-remote_theme: patdryburgh/hitchens@0.7.2
+remote_theme: patdryburgh/hitchens@0.7.2 # amazing theme!
 plugins:
   - jekyll-feed
 
