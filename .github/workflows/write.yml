@@ -25,6 +25,7 @@ jobs:
       run: python write.py --pull
     # Doing in the same action because Github Actions do not trigger subsequent actions
     # limitation of using automatic secrets.GITHUB_TOKEN.
+    - run: sleep 10
     - name: Merge
       uses: "pascalgn/automerge-action@v0.15.6"
       env:

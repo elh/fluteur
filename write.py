@@ -28,9 +28,11 @@ def main():
   parser.add_argument("--prompt", type=str, default='prompting/poem.yml',
                       help="prompt template")
   parser.add_argument("--commit", type=bool, default=False,
-                      action=argparse.BooleanOptionalAction, help="if true, create commit")
+                      action=argparse.BooleanOptionalAction,
+                      help="if true, create commit")
   parser.add_argument("--pull", type=bool, default=False,
-                      action=argparse.BooleanOptionalAction, help="if true, create pull request")
+                      action=argparse.BooleanOptionalAction,
+                      help="if true, create pull request")
   args = parser.parse_args()
 
   prompting = None

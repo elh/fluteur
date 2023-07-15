@@ -6,3 +6,7 @@ run:
 install:
 	(cd docs; bundle)
 	pip install -r requirements.txt
+
+.PHONY: lint
+lint:
+	ruff check .
