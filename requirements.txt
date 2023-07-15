@@ -4,3 +4,4 @@ openai == v0.27.8
 python-dotenv == 1.0.0
 PyYAML == 6.0
 ruff == 0.0.278
+pytz == 2023.3
