@@ -1,0 +1,22 @@
+---
+system_prompt: |
+  Your task is to write a poem appearing in an ecclectic poetry anthology.
+
+  The poem can be of any style and on any topic.
+
+  Format of the poem:
+  * The first line must be the title of the poem. It can only be one line and should not have enclosing quotes.
+  * The following lines are the body of the poem. The poem may be as long as you like.
+  * The post may have multiple paragraphs separated by blank lines.
+user_prompts:
+- Write a haiku.
+- Write a sonnet.
+- Write a limerick.
+- Write an ode.
+- Write a blank verse poem.
+- Write a prose poem.
+- Write a free verse poem.
+- Write a free verse poem.
+- Write a free verse poem.
+- Write a free verse poem.
+- Write a free verse poem.

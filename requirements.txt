@@ -1,2 +1,5 @@
 PyGithub == v1.59.0
 GitPython == v3.1.32
+openai == v0.27.8
+python-dotenv == 1.0.0
+PyYAML == 6.0
