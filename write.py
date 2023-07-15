@@ -26,6 +26,8 @@ def main():
                       help="prompt template")
   parser.add_argument("--commit", type=bool, default=False,
                       action=argparse.BooleanOptionalAction, help="if true, create commit")
+  parser.add_argument("--pull", type=bool, default=False,
+                      action=argparse.BooleanOptionalAction, help="if true, create pull request")
   args = parser.parse_args()
 
   prompting = None
@@ -65,7 +67,8 @@ def main():
 
   # create file
   now = datetime.now()
-  file_name = f"docs/_posts/{now.strftime('%Y-%m-%d')}-{sanitize_url(title)}.markdown"
+  sanitized_title = f"{now.strftime('%Y-%m-%d')}-{sanitize_url(title)}"
+  file_name = f"docs/_posts/{sanitized_title}.markdown"
   with open(file_name, 'w') as f:
     front = '''---
 layout: post
@@ -76,10 +79,18 @@ date:   {date} -0700
     f.write(front + body)
 
   # if commit flag is set, commit
-  if args.commit:
-    repo = Repo('.')
+  repo = Repo('.')
+  if args.commit or args.pull:
+    repo.git.checkout("HEAD", b=sanitized_title)
     repo.index.add([file_name])
     repo.index.commit(f"Wrote {file_name}")
+
+  # if pull, push to remote and create a pull request
+  if args.pull:
+    origin = repo.remote(name='origin')
+    origin.push(sanitized_title).raise_if_error()
+
+    # TODO: create github pull request
 
 if __name__ == "__main__":
   main()
