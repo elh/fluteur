@@ -79,11 +79,14 @@ def main():
   file_name = f"docs/_posts/{sanitized_title}.markdown"
   with open(file_name, 'w') as f:
     front = '''---
-layout: post
-title:  {title}
-date:   {date}
+layout:     post
+title:      {title}
+date:       {date}
+author:     Flûteur
+categories: {categories}
 ---
-'''.format(title=title, date=now.strftime('%Y-%m-%d %H:%M:%S %z'))
+'''.format(title=title, date=now.strftime('%Y-%m-%d %H:%M:%S %z'),
+           categories=prompting['categories'])
     f.write(front + body)
 
   # if --commit, commit change on a new branch
