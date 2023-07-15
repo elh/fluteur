@@ -1,0 +1,22 @@
+# needed because I think Github native auto merge requires at least some check to exist
+
+# auto merge PRs
+name: merge
+on:
+  pull_request:
+    types:
+      - opened
+  check_suite:
+    types:
+      - completed
+  status: {}
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - id: automerge
+        name: automerge
+        uses: "pascalgn/automerge-action@v0.15.6"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: ""

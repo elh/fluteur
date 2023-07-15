@@ -1,6 +1,9 @@
 name: write
 
-on: workflow_dispatch
+on:
+  schedule:
+    - cron: '0 16 * * *'
+  workflow_dispatch:
 
 jobs:
   write:
