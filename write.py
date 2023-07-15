@@ -2,7 +2,6 @@ import os
 import argparse
 import time
 from datetime import datetime
-import pytz
 import re
 import yaml
 import random
@@ -73,8 +72,6 @@ def main():
 
   # create file
   now = datetime.now()
-  current_timezone = pytz.timezone(pytz.localize().zone)
-  now = now.replace(tzinfo=current_timezone)
   sanitized_title = f"{now.strftime('%Y-%m-%d')}-{sanitize_url(title)}"
   file_name = f"docs/_posts/{sanitized_title}.markdown"
   with open(file_name, 'w') as f:
