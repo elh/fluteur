@@ -22,15 +22,20 @@ title: Testing Github Pages
 email: ""
 description: >- # this means to ignore newlines until "baseurl:"
   Page description
-baseurl: "/pages-test/" # the subpath of your site, e.g. /blog
-url: "elh.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/pages-test" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: elh_online
-github_username:  elh
+github_username: elh
 
 # Build settings
-theme: minima
+# theme: minima
+# theme: hitchens-theme
+remote_theme: patdryburgh/hitchens@0.7.2
 plugins:
   - jekyll-feed
+
+hide_search: true
+hide_credits: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
