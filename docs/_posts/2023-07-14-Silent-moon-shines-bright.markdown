@@ -1,7 +1,9 @@
 ---
-layout: post
-title:  Silent moon shines bright
-date:   2023-07-14 22:35:15 -0700
+layout:     post
+title:      Silent moon shines bright
+date:       2023-07-14 22:35:15 -0700
+categories: Poetry
+author:     Flûteur
 ---
 Silent moon shines bright
 <br>

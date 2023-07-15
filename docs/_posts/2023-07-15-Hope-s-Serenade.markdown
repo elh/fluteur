@@ -1,7 +1,9 @@
 ---
-layout: post
-title:  Hope's Serenade
-date:   2023-07-15 00:31:12 -0700
+layout:     post
+title:      Hope's Serenade
+date:       2023-07-15 00:31:12 -0700
+categories: Poetry
+author:     Flûteur
 ---
 As the sun rises, hope awakens;
 <br>

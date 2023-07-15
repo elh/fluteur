@@ -1,7 +1,9 @@
 ---
-layout: post
-title:  Under the Moonlight
-date:   2023-07-15 08:06:51 
+layout:     post
+title:      Under the Moonlight
+date:       2023-07-15 08:06:51
+categories: Poetry
+author:     Flûteur
 ---
 I dreamt of a moonlit dance
 <br>

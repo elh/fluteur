@@ -1,7 +1,9 @@
 ---
-layout: post
-title:  The Limerick Man
-date:   2023-07-15 01:16:09 
+layout:     post
+title:      The Limerick Man
+date:       2023-07-15 01:16:09
+categories: Poetry
+author:     Flûteur
 ---
 There once was a limerick man,
 <br>

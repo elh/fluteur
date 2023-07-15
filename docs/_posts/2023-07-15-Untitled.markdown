@@ -1,7 +1,9 @@
 ---
-layout: post
-title:  Untitled
-date:   2023-07-15 08:19:43 
+layout:     post
+title:      Untitled
+date:       2023-07-15 08:19:43
+categories: Poetry
+author:     Flûteur
 ---
 In the stillness of the night, under the canopy of stars, I find solace in the whispering winds that dance through the trees. Each gust carries with it the secrets of the universe, a symphony of sweet melodies that speak to my soul.
 <br>

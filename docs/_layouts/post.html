@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+<!-- customizing patdryburgh/hitchens -->
+
+{% if site.data.menu %}
+  {% include menu.html %}
+{% else %}
+  {% include back-link.html %}
+{% endif %}
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting" id="main" role="article" aria-label="Content">
+
+  {% if page.title != "" %}
+    <h1 class="post-title divided p-name" itemprop="name headline">
+      {{ page.title }}
+    </h1>
+  {% endif %}
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <!-- custom(elh): i've changed all of post-meta. supporting a category list -->
+  <div class="post-meta">
+    {% if page.categories %}
+      <div class="post-meta-categories" itemprop="categories">{{ page.categories }}</div>
+    {% endif %}
+    <div class="post-meta-author">
+        {% if page.author %}
+        <div itemprop="author">{{ page.author }}</div>
+        {% endif %}
+        <time class="post-date dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
+    </div>
+  </div>
+
+  {% if site.disqus.shortname %}
+    {% include disqus-comments.html %}
+  {% endif %}
+
+</article>
