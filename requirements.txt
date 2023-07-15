@@ -1,0 +1,2 @@
+PyGithub == v1.59.0
+GitPython == v3.1.32
