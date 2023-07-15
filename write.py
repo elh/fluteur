@@ -90,10 +90,12 @@ date:   {date} -0700
 
   # if --pull, push to remote and create a pull request
   if args.pull:
-    origin = repo.remote(name='origin')
-    origin.push(sanitized_title).raise_if_error()
+    gh_token = os.getenv('GH_TOKEN')
+    remote_url = f"https://{gh_token}@github.com/{REPO}.git"
+    remote = repo.create_remote(name='origin_with_token', url=remote_url)
+    remote.push(refspec=f'HEAD:{sanitized_title}')
 
-    g = Github(os.getenv('GH_TOKEN'))
+    g = Github(gh_token)
     repo = g.get_repo(REPO)
 
     repo.create_pull(
