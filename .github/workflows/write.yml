@@ -23,7 +23,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: python write.py --pull
-    # NOTE: does not work
+    # NOTE: does not work. just going to merge it from write.py
     # Doing in the same action because Github Actions do not trigger subsequent actions
     # limitation of using automatic secrets.GITHUB_TOKEN.
     # - run: sleep 10

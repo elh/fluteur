@@ -5,6 +5,7 @@ from datetime import datetime
 import re
 import yaml
 import random
+import uuid
 from dotenv import load_dotenv
 from git import Repo
 from github import Github
@@ -14,6 +15,8 @@ import openai
 write generates a new post in a new file and creates a new commit
 
 Usage: python write.py [--prompt prompting/poem.yml] [--commit] [--pull]
+# NOTE: if --pull, we will also merge the PR here as well. Automerging functionality
+# is not working very well for PRs that are created from Github Actions themselves.
 """
 
 REPO = "elh/fluteur"
@@ -94,18 +97,21 @@ date:   {date}
   if args.pull:
     gh_token = os.getenv('GH_TOKEN')
     remote_url = f"https://{gh_token}@github.com/{REPO}.git"
-    remote = repo.create_remote(name='origin_with_token', url=remote_url)
+    remote = repo.create_remote(name=f'origin_{str(uuid.uuid4())[:6]}', url=remote_url)
     remote.push(refspec=f'HEAD:{sanitized_title}')
 
     g = Github(gh_token)
     repo = g.get_repo(REPO)
 
-    repo.create_pull(
+    pull = repo.create_pull(
       title=f"Add \"{title}\"",
       body="",
       head=sanitized_title,
       base="main"
     )
+
+    # NOTE: and then merge it
+    pull.merge(commit_title=f"Merge pull request #{pull.number} from {sanitized_title}")
 
 if __name__ == "__main__":
   main()
