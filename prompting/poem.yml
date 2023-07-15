@@ -9,12 +9,21 @@ system_prompt: |
   * The following lines are the body of the poem. The poem may be as long as you like.
   * The post may have multiple paragraphs separated by blank lines.
 user_prompts:
-- Write a haiku.
 - Write a sonnet.
 - Write a limerick.
 - Write an ode.
+- Write a haiku.
+- Write a haiku.
+- Write a haiku.
 - Write a blank verse poem.
 - Write a prose poem.
+- Write a prose poem.
+- Write a prose poem.
+- Write a free verse poem.
+- Write a free verse poem.
+- Write a free verse poem.
+- Write a free verse poem.
+- Write a free verse poem.
 - Write a free verse poem.
 - Write a free verse poem.
 - Write a free verse poem.

@@ -16,7 +16,7 @@ write generates a new post in a new file and creates a new commit
 Usage: python write.py [--prompt prompting/poem.yml] [--commit] [--pull]
 """
 
-REPO = "elh/pages-test"
+REPO = "elh/fluteur"
 
 def sanitize_url(input):
   alphanumeric_chars = re.sub(r'\W+', ' ', input)

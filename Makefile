@@ -6,7 +6,3 @@ run:
 install:
 	(cd docs; bundle)
 	pip install -r requirements.txt
-
-.PHONY: write
-write:
-	python write.py
