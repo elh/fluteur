@@ -1,0 +1,10 @@
+---
+layout: post
+title:  Haiku
+date:   2023-07-15 01:14:28 
+---
+Autumn leaves falling,
+<br>
+Nature's crisp, colorful cloak,
+<br>
+Whispers of farewell.
