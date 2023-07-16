@@ -72,7 +72,9 @@ def main():
       body = '\n'.join(output.splitlines()[:-1])  # everything else
 
       if 'Accept' in recommendation:
-        pull.create_review(body=body, event="APPROVE")
+        # TODO: actually approve pull request via event="APPROVE". currently,
+        # cannot approve own PRs while using default github action token
+        pull.create_review(body=body, event="COMMENT")
         pull.merge(commit_title=f"Merge pull request #{pull.number}: {pull.title}")
       elif 'Reject' in recommendation:
         pull.create_review(body=body, event="COMMENT")
