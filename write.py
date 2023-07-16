@@ -1,6 +1,5 @@
 import os
 import argparse
-import time
 from datetime import datetime
 import re
 import yaml
@@ -9,7 +8,7 @@ import uuid
 from dotenv import load_dotenv
 from git import Repo
 from github import Github
-import openai
+from gpt_util import chat_completion
 
 """
 write generates a new post in a new file and creates a new commit
@@ -41,31 +40,9 @@ def main():
     prompt = yaml.safe_load(f)
 
   # generate new post
-  openai.api_key = os.getenv("OPENAI_API_KEY")
-  start = time.time()
-  response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[
-      {
-        "role": "system",
-        "content": prompt['system_prompt'],
-      },
-      {
-        "role": "user",
-        # select a random prompt from the list
-        "content": random.choice(prompt['user_prompts']),
-      }
-    ],
-    temperature=1.0,
-    stream=True
-  )
-  output = ''
-  for event in response:
-    content = event["choices"][0].get("delta", {}).get("content")
-    if content is not None:
-      output += content
-      print(content, end='')
-  print(f"\nDone in {(time.time() - start):.2f}")
+  system_prompt = prompt['system_prompt']
+  user_prompt = random.choice(prompt['user_prompts'])
+  output = chat_completion(system_prompt, user_prompt)
 
   title = output.split('\n')[0]
   body = '\n'.join(output.split('\n')[1:])

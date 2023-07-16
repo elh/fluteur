@@ -5,7 +5,7 @@ import yaml
 import random
 from dotenv import load_dotenv
 from github import Github
-import openai
+from gpt_util import chat_completion
 
 """
 merge reviews "gen" PRs and then optionally closes or merges them
@@ -40,33 +40,11 @@ def main():
     print(f"reviewing {pull.title}...")
 
     # generate new post
-    openai.api_key = os.getenv("OPENAI_API_KEY")
-    start = time.time()
-    # random prompt w/ pull request body appended
+    system_prompt = prompt['system_prompt']
     user_prompt = random.choice(prompt['user_prompts']) + '\n\n' + pull.body
-    response = openai.ChatCompletion.create(
-      model="gpt-3.5-turbo",
-      messages=[
-        {
-          "role": "system",
-          "content": prompt['system_prompt'],
-        },
-        {
-          "role": "user",
-          "content": user_prompt,
-        }
-      ],
-      temperature=1.0,
-      stream=True
-    )
-    output = ''
-    for event in response:
-      content = event["choices"][0].get("delta", {}).get("content")
-      if content is not None:
-        output += content
-        print(content, end='')
-    print(f"\nDone in {(time.time() - start):.2f}")
+    output = chat_completion(system_prompt, user_prompt)
 
+    # if --merge, close or merge PR. otherwise, just comment
     if args.merge:
       recommendation = output.splitlines()[-1]    # last line
       body = '\n'.join(output.splitlines()[:-1])  # everything else
