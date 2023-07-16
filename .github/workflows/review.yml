@@ -1,0 +1,25 @@
+name: review
+
+on:
+  schedule:
+    - cron: '10 16 * * *'
+  workflow_dispatch:
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.11
+    - name: Install
+      run: pip install -r requirements.txt
+    - name: Review
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: python review.py --merge

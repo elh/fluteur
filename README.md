@@ -1,6 +1,7 @@
 # Flûteur automate 🪈
 
 [![write status](https://github.com/elh/fluteur/actions/workflows/write.yml/badge.svg)](https://github.com/elh/fluteur/actions/workflows/write.yml)
+[![review status](https://github.com/elh/fluteur/actions/workflows/review.yml/badge.svg)](https://github.com/elh/fluteur/actions/workflows/review.yml)
 
 A self-updating website hosted for free entirely in Github using Actions, Pages, Pull Requests. Contents created by GPT.
 
