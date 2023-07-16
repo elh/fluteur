@@ -106,7 +106,7 @@ categories: {categories}
 
     pull = repo.create_pull(
       title=f"Add \"{title}\"",
-      body=body,
+      body=output,
       head=sanitized_title,
       base="main"
     )
