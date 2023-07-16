@@ -12,21 +12,21 @@ system_prompt: |
 user_prompts:
 - Write a sonnet.
 - Write a limerick.
-- Write an ode.
+- Write an ode that is not about nature.
 - Write a haiku.
-- Write a haiku.
-- Write a haiku.
+- Write a haiku that is not about nature.
+- Write a haiku that is not about nature.
 - Write a blank verse poem.
 - Write a prose poem.
-- Write a prose poem.
-- Write a prose poem.
+- Write a prose poem that is not about nature.
+- Write a prose poem that is not about nature.
 - Write a free verse poem.
 - Write a free verse poem.
 - Write a free verse poem.
-- Write a free verse poem.
-- Write a free verse poem.
-- Write a free verse poem.
-- Write a free verse poem.
-- Write a free verse poem.
-- Write a free verse poem.
-- Write a free verse poem.
+- Write a free verse poem that is not about nature.
+- Write a free verse poem that is not about nature.
+- Write a free verse poem that is not about nature.
+- Write a free verse poem that is not about nature.
+- Write a free verse poem that is not about nature.
+- Write a free verse poem that is not about nature.
+- Write a free verse poem that is not about nature.

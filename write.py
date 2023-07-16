@@ -15,8 +15,6 @@ import openai
 write generates a new post in a new file and creates a new commit
 
 Usage: python write.py [--prompt prompting/poem.yml] [--commit] [--pull]
-# NOTE: if --pull, we will also merge the PR here as well. Automerging functionality
-# is not working very well for PRs that are created from Github Actions themselves.
 """
 
 REPO = "elh/fluteur"
@@ -96,7 +94,7 @@ categories: {categories}
     repo.index.add([file_name])
     repo.index.commit(f"Wrote {file_name}")
 
-  # if --pull, push to remote and create a pull request
+  # if --pull, push to remote and create a pull request tagged with "gen"
   if args.pull:
     gh_token = os.getenv('GH_TOKEN')
     remote_url = f"https://{gh_token}@github.com/{REPO}.git"
@@ -112,9 +110,7 @@ categories: {categories}
       head=sanitized_title,
       base="main"
     )
-
-    # NOTE: and then merge it
-    pull.merge(commit_title=f"Merge pull request #{pull.number} from {sanitized_title}")
+    pull.set_labels('gen')
 
 if __name__ == "__main__":
   main()
