@@ -14,7 +14,7 @@ import openai
 """
 write generates a new post in a new file and creates a new commit
 
-Usage: python write.py [--prompt prompting/poem.yml] [--commit] [--pull]
+Usage: python write.py [--prompt prompts/write/poem.yml] [--commit] [--pull]
 """
 
 REPO = "elh/fluteur"
@@ -26,7 +26,7 @@ def sanitize_url(input):
 def main():
   load_dotenv()
   parser = argparse.ArgumentParser()
-  parser.add_argument("--prompt", type=str, default='prompting/poem.yml',
+  parser.add_argument("--prompt", type=str, default='prompts/write/poem.yml',
                       help="prompt template")
   parser.add_argument("--commit", type=bool, default=False,
                       action=argparse.BooleanOptionalAction,
@@ -36,9 +36,9 @@ def main():
                       help="if true, create pull request")
   args = parser.parse_args()
 
-  prompting = None
+  prompt = None
   with open(args.prompt, 'r') as f:
-    prompting = yaml.safe_load(f)
+    prompt = yaml.safe_load(f)
 
   # generate new post
   openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -48,12 +48,12 @@ def main():
     messages=[
       {
         "role": "system",
-        "content": prompting['system_prompt'],
+        "content": prompt['system_prompt'],
       },
       {
         "role": "user",
         # select a random prompt from the list
-        "content": random.choice(prompting['user_prompts']),
+        "content": random.choice(prompt['user_prompts']),
       }
     ],
     temperature=1.0,
@@ -69,7 +69,7 @@ def main():
 
   title = output.split('\n')[0]
   body = '\n'.join(output.split('\n')[1:])
-  body = re.sub(r'\n', '\n<br>\n', body).strip().strip('<br>').strip()
+  body_md = re.sub(r'\n', '\n<br>\n', body).strip().strip('<br>').strip()
 
   # create file
   now = datetime.now()
@@ -84,8 +84,8 @@ author:     Flûteur
 categories: {categories}
 ---
 '''.format(title=title, date=now.strftime('%Y-%m-%d %H:%M:%S %z'),
-           categories=prompting['categories'])
-    f.write(front + body)
+           categories=prompt['categories'])
+    f.write(front + body_md)
 
   # if --commit, commit change on a new branch
   repo = Repo('.')
@@ -106,7 +106,7 @@ categories: {categories}
 
     pull = repo.create_pull(
       title=f"Add \"{title}\"",
-      body="",
+      body=body,
       head=sanitized_title,
       base="main"
     )
