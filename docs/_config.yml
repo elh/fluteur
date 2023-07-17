@@ -20,7 +20,7 @@
 
 title: Flûteur automate
 email: ""
-description: "⨳"
+description: "Blog automaton"
 baseurl: "/fluteur" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: elh
