@@ -26,7 +26,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: elh
 
 # Build settings
-remote_theme: patdryburgh/hitchens@0.7.2 # amazing theme!
+remote_theme: elh/hitchens@0.7.2 # fork
 plugins:
   - jekyll-feed
   - jekyll-paginate

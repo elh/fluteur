@@ -1,6 +1,5 @@
 import os
 import argparse
-import time
 import yaml
 import random
 from dotenv import load_dotenv
