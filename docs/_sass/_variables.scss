@@ -1,9 +1,9 @@
-// customizing patdryburgh/hitchens
+// customizing elh/hitchens
 
-$brand-color:         #fafafa;                   // custom(elh): try white on white
-$highlight:           darken($brand-color, 10%); // custom(elh): because brand color is white now
+$brand-color:         #fafafa;                     // white on white background
+$highlight:           darken($brand-color, 10%);   // adjust because of white on white
 $text-color:          #0b0404;
-$muted-text-color:    #0b0404;                   // custom(elh): use same color as text-color
+$muted-text-color:    #0b0404;                     // same color as text-color
 $font-family:         "EB Garamond", Garamond, "Times New Roman", serif;
 
 $on-bigphone:         375px;
