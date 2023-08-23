@@ -2,7 +2,7 @@ name: review
 
 on:
   schedule:
-    - cron: '10 16 * * *'
+    - cron: '0 16 * * 2'
   workflow_dispatch:
 
 jobs:
