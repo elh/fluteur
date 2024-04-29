@@ -2,7 +2,7 @@
 layout:     post
 title:      A Song of the City
 date:       2023-09-04 16:06:29 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 The city is a symphony; its streets are the notes that play upon the soul. The rhythm of footsteps, like a heartbeat, resonates against the pavement. A cacophony of honking horns and bustling crowds, echoing through the narrow alleyways. The city breathes, inhaling the scent of coffee beans roasting and exhaling the fragrance of freshly baked bread.

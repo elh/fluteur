@@ -2,7 +2,7 @@
 layout:     post
 title:      The Weight of Memories
 date:       2023-08-28 16:06:22 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 I carry the weight of memories

@@ -2,7 +2,7 @@
 layout:     post
 title:      The Nightingale's Lament
 date:       2023-12-18 16:06:31 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 There was a time, in a forgotten age, when the nightingale's melody held the hearts of all who listened. Its voice, so sweet and ethereal, soared through the moonlit sky, filling the night with a symphony of longing and desire.

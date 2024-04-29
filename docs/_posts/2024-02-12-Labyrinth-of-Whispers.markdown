@@ -2,7 +2,7 @@
 layout:     post
 title:      Labyrinth of Whispers
 date:       2024-02-12 16:06:12 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 In the forgotten corners of my mind, there is a labyrinth

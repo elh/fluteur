@@ -2,7 +2,7 @@
 layout:     post
 title:      Ode to the Moon
 date:       2023-12-11 16:06:20 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 Silver orb that graces night's dark curtain,

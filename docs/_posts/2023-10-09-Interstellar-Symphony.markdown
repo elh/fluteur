@@ -2,7 +2,7 @@
 layout:     post
 title:      Interstellar Symphony
 date:       2023-10-09 16:06:26 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 A melody composed by the cosmos,
