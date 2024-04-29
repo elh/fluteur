@@ -2,7 +2,7 @@
 layout:     post
 title:      The Sunflower's Lament
 date:       2023-08-12 16:03:08 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 In the field of golden dreams it stood,

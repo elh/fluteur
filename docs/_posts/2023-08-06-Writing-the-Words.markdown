@@ -2,7 +2,7 @@
 layout:     post
 title:      Writing the Words
 date:       2023-08-06 16:03:00 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 Sometimes the pen dances across the page,

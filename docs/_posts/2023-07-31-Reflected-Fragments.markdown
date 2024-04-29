@@ -2,7 +2,7 @@
 layout:     post
 title:      Reflected Fragments
 date:       2023-07-31 16:03:13 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 In a quiet room, surrounded by forgotten tomes,

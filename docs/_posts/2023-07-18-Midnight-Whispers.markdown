@@ -2,7 +2,7 @@
 layout:     post
 title:      Midnight Whispers
 date:       2023-07-18 16:03:22 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 The moonlight whispers secrets in the night,

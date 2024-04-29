@@ -3,7 +3,7 @@ layout:     post
 title:      Hope's Serenade
 date:       2023-07-15 00:31:12 -0700
 categories: Poetry
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 ---
 As the sun rises, hope awakens;
 <br>

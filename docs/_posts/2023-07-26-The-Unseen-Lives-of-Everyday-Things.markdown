@@ -2,7 +2,7 @@
 layout:     post
 title:      The Unseen Lives of Everyday Things
 date:       2023-07-26 16:02:50 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 In the attic, dusty and forgotten,

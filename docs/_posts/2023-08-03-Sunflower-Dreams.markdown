@@ -2,7 +2,7 @@
 layout:     post
 title:      Sunflower Dreams
 date:       2023-08-03 16:02:47 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 Among the sprawling gardens of imagination,

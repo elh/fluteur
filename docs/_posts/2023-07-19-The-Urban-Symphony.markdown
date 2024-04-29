@@ -2,7 +2,7 @@
 layout:     post
 title:      The Urban Symphony
 date:       2023-07-19 16:03:31 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 The city sings its symphony of sirens,

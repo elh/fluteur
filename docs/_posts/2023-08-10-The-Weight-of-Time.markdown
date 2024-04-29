@@ -2,7 +2,7 @@
 layout:     post
 title:      The Weight of Time
 date:       2023-08-10 16:02:50 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 When I close my eyes,

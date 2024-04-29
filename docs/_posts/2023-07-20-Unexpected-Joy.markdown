@@ -2,7 +2,7 @@
 layout:     post
 title:      Unexpected Joy
 date:       2023-07-20 16:02:55 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 In a crowded room,

@@ -2,7 +2,7 @@
 layout:     post
 title:      Memories Unraveled
 date:       2023-08-02 16:02:59 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 I sit in the corner of my room,

@@ -2,7 +2,7 @@
 layout:     post
 title:      Ode to the Stars
 date:       2023-07-29 16:03:04 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 In the velvet stillness of the night,

@@ -2,7 +2,7 @@
 layout:     post
 title:      The Broken Clock
 date:       2023-07-27 16:03:09 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 Each tick, a reminder of passing time,

@@ -3,7 +3,7 @@ layout:     post
 title:      The Limerick Man
 date:       2023-07-15 01:16:09
 categories: Poetry
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 ---
 There once was a limerick man,
 <br>

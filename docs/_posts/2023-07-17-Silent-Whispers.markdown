@@ -2,7 +2,7 @@
 layout:     post
 title:      Silent Whispers
 date:       2023-07-17 16:03:03 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 In this city of concrete, where dreams are orchestrated by neon lights,

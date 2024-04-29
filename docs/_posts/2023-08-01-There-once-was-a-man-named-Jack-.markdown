@@ -2,7 +2,7 @@
 layout:     post
 title:      There once was a man named Jack,
 date:       2023-08-01 16:02:58 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 Who lived by the railroad track,

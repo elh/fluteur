@@ -2,7 +2,7 @@
 layout:     post
 title:      Quivering Hearts
 date:       2023-07-28 16:02:57 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 In the depths of our souls, where passion ignites,

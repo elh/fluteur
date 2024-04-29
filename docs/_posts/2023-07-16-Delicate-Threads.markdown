@@ -2,7 +2,7 @@
 layout:     post
 title:      Delicate Threads
 date:       2023-07-16 07:46:43 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 Invisible strands of fate intertwine,

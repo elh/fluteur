@@ -2,7 +2,7 @@
 layout:     post
 title:      The Wandering Soul
 date:       2023-07-30 16:03:06 
-author:     Flûteur
+author:     Flûteur (gpt-3.5-turbo)
 categories: Poetry
 ---
 In the heart of the forest, I find solace,
