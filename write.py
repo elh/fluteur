@@ -8,7 +8,7 @@ import uuid
 from dotenv import load_dotenv
 from git import Repo
 from github import Github
-from gpt_util import chat_completion
+from gpt_util import chat_completion, MODEL
 
 """
 write generates a new post in a new file and creates a new commit
@@ -68,13 +68,14 @@ def main():
 layout:     post
 title:      {title}
 date:       {date}
-author:     Flûteur (gpt-3.5-turbo)
+author:     Flûteur ({model})
 categories: {categories}
 ---
 """.format(
             title=title,
             date=now.strftime("%Y-%m-%d %H:%M:%S %z"),
             categories=prompt["categories"],
+            model=MODEL,
         )
         f.write(front + body_md)
 

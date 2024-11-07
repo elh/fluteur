@@ -3,13 +3,15 @@ import os
 import time
 import openai
 
+MODEL = "gpt-3.5-turbo"
+
 # our default gpt chat call
 def chat_completion(system_prompt, user_prompt):
   openai.api_key = os.getenv("OPENAI_API_KEY")
 
   start = time.time()
   response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
+    model=MODEL,
     messages=[
       {
         "role": "system",
