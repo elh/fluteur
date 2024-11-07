@@ -3,7 +3,7 @@ import os
 import time
 import openai
 
-MODEL = "gpt-3.5-turbo"
+MODEL = "gpt-4o-mini"
 
 # our default gpt chat call
 def chat_completion(system_prompt, user_prompt):
