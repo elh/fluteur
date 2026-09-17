@@ -1,16 +1,14 @@
 
-import os
 import time
-import openai
+from openai import OpenAI
 
-MODEL = "gpt-4o-mini"
+MODEL = "gpt-6-astra"
 
 # our default gpt chat call
 def chat_completion(system_prompt, user_prompt):
-  openai.api_key = os.getenv("OPENAI_API_KEY")
-
   start = time.time()
-  response = openai.ChatCompletion.create(
+  client = OpenAI(timeout=120.0)
+  response = client.chat.completions.create(
     model=MODEL,
     messages=[
       {
@@ -22,16 +20,25 @@ def chat_completion(system_prompt, user_prompt):
         "content": user_prompt,
       }
     ],
-    temperature=1.0,
+    reasoning_effort="low",
+    max_completion_tokens=8192,
     stream=True
   )
 
   output = ''
-  for event in response:
-    content = event["choices"][0].get("delta", {}).get("content")
-    if content is not None:
-      output += content
-      print(content, end='')
+  finish_reason = None
+  with response:
+    for event in response:
+      if not event.choices:
+        continue
+      choice = event.choices[0]
+      if choice.delta.content is not None:
+        output += choice.delta.content
+        print(choice.delta.content, end='', flush=True)
+      if choice.finish_reason is not None:
+        finish_reason = choice.finish_reason
+  if finish_reason != "stop" or not output.strip():
+    raise RuntimeError(f"Model did not return a complete response ({finish_reason})")
   print(f"\nDone in {(time.time() - start):.2f}")
 
   return output
