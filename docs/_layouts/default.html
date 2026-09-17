@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ site.title | escape }}{% if page.title and page.title != "" %} &mdash; {{ page.title | escape }}{% endif %}</title>
+
+    {% comment %}The theme has no head include; keep this override for social metadata.{% endcomment %}
+    {% assign description = site.description %}
+    {% if page.layout == 'post' and page.author %}
+      {% capture description %}An AI-generated poem by {{ page.author }}.{% endcapture %}
+    {% endif %}
+    {% assign social_title = page.title | default: site.title %}
+    {% if page.layout == 'home' %}{% assign social_title = site.title %}{% endif %}
+    {% assign social_image = '/assets/images/automates-vaucanson.jpg' | absolute_url %}
+    <meta name="description" content="{{ description | escape }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:title" content="{{ social_title | escape }}">
+    <meta property="og:description" content="{{ description | escape }}">
+    <meta property="og:site_name" content="{{ site.title | escape }}">
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ social_image }}">
+    <meta property="og:image:alt" content="Public-domain engraving of Vaucanson's automata">
+    {% if page.layout == 'post' %}
+      <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ social_title | escape }}">
+    <meta name="twitter:description" content="{{ description | escape }}">
+    <meta name="twitter:image" content="{{ social_image }}">
+    <meta name="twitter:image:alt" content="Public-domain engraving of Vaucanson's automata">
+
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | absolute_url }}?{{ site.time | date: '%s%N' }}">
+
+    <link rel="apple-touch-icon" href="{{ site.icon }}">
+
+    {%- if jekyll.environment == 'production' and site.google_analytics -%}
+      {%- include google-analytics.html -%}
+    {%- endif -%}
+
+  </head>
+  <body>
+
+    <!-- elh: disable the "skip" pop-up header -->
+    <!-- {% if page.layout == 'home' %}
+      <a href="#main" class="skip-navigation">
+        Skip to list of posts
+      </a>
+    {% else %}
+      <a href="#main" class="skip-navigation">
+        Skip to content
+      </a>
+    {% endif %} -->
+
+    {{ content }}
+
+    {% unless site.hide_search %}
+      {% include search.html %}
+    {% endunless %}
+
+    {% include menu.html %}
+
+    {% unless site.hide_credits %}
+      <aside class="site-credits">
+        <p>
+          <small><a href="https://github.com/patdryburgh/hitchens">Hitchens Theme</a> powered by <a href="http://jekyllrb.com">Jekyll</a></small>
+        </p>
+      </aside>
+    {% endunless %}
+
+  </body>
+</html>

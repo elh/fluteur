@@ -3,18 +3,8 @@
 [![write status](https://github.com/elh/fluteur/actions/workflows/write.yml/badge.svg)](https://github.com/elh/fluteur/actions/workflows/write.yml)
 [![review status](https://github.com/elh/fluteur/actions/workflows/review.yml/badge.svg)](https://github.com/elh/fluteur/actions/workflows/review.yml)
 
-A self-updating website hosted for free entirely in Github using Actions, Pages, Pull Requests. Contents created by GPT.
+A self-updating website hosted for free entirely in GitHub using Actions, Pages, Pull Requests. Contents created by GPT.
 
-Flûteur is an early experiment in procedural generation of websites and collaborative agents. It intends to be an unserious automaton curiosity like the [flûteur automate de Vaucanson](https://fr.wikipedia.org/wiki/Fl%C3%BBteur_automate_de_Vaucanson). When enabled, the jobs run every two weeks: write on Monday and review on Tuesday at 16:00 UTC.
+Flûteur is an early experiment in procedural generation of websites and collaborative agents. It intends to be an unserious automaton curiosity like the [flûteur automate de Vaucanson](https://fr.wikipedia.org/wiki/Fl%C3%BBteur_automate_de_Vaucanson). It runs every two weeks.
 
-The cadence is anchored to September 21–22, 2026, then October 5–6, and every 14 days afterward. GitHub checks the schedule weekly; `cadence.py` skips setup and model calls on alternate weeks. Both jobs share this date check so they stay aligned across month and year boundaries. Manual runs bypass the cadence check.
-
-On a cadence, a scheduled Action runs `write.py` opening a PR to add a new poem, then another scheduled Action runs `review.py`. If the poem passes the review, it is merged; otherwise, the PR is closed. After any successful merges, the review workflow explicitly requests a GitHub Pages build to publish the updated site. This is necessary because merges made with `GITHUB_TOKEN` do not trigger Pages builds automatically. Normal pushes to `main` still deploy as before.
-
-To retry deployment without reviewing poems or calling OpenAI, manually run the **review** workflow with **rebuild_only** enabled. It rebuilds the current `main` branch using the existing workflow token and its `pages: write` permission; no additional secret is needed.
-
-Both scripts use GPT-6 Astra with low reasoning effort and a maximum of 8,192 completion tokens per call (including reasoning). The model is configured in `gpt_util.py`. Set `OPENAI_API_KEY` in a local `.env` file or the repository's Actions secrets; publishing also requires `GH_TOKEN` (the workflow uses `GITHUB_TOKEN`). Python 3.11 or newer is required.
-
-To check the saved API key without opening a poem PR, manually run the **write** workflow with **preview** enabled. It makes a real model request and saves the generated post as the `poem-preview` artifact. With the default settings, the job opens a poem PR as before. A disabled workflow must be temporarily enabled to dispatch a test; disable it again afterward to keep the schedule paused.
-
-The About page bundles the original public-domain Vaucanson engraving in `docs/assets/images/automates-vaucanson.jpg`, with its source credited on the page, so it does not depend on Wikimedia thumbnail URLs.
+A scheduled Action runs `write.py` on Monday to open a PR with a new poem, then `review.py` reviews it on Tuesday. Both use GPT-6 Astra. Accepted poems are merged and automatically deployed to GitHub Pages; otherwise, the PR is closed.
