@@ -2,23 +2,31 @@ name: review
 
 on:
   schedule:
+    # Use the same active weeks as the writer, one day later.
     - cron: '0 16 * * 2'
   workflow_dispatch:
 
 jobs:
   review:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
       pull-requests: write
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v7
+    - name: Check fortnightly cadence
+      id: cadence
+      run: python3 cadence.py >> "$GITHUB_OUTPUT"
+    - uses: actions/setup-python@v7
+      if: steps.cadence.outputs.run == 'true'
       with:
-        python-version: 3.11
+        python-version: '3.11'
     - name: Install
+      if: steps.cadence.outputs.run == 'true'
       run: pip install -r requirements.txt
     - name: Review
+      if: steps.cadence.outputs.run == 'true'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

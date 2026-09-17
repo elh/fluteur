@@ -53,30 +53,28 @@ def main():
     # generate new post
     system_prompt = prompt["system_prompt"]
     user_prompt = random.choice(prompt["user_prompts"])
-    output = chat_completion(system_prompt, user_prompt)
+    output = chat_completion(system_prompt, user_prompt).strip()
 
     title = output.split("\n")[0]
     body = "\n".join(output.split("\n")[1:])
-    body_md = re.sub(r"\n", "\n<br>\n", body).strip().strip("<br>").strip()
+    body_md = re.sub(r"\n", "\n<br>\n", body.strip())
 
     # create file
     now = datetime.now()
     sanitized_title = f"{now.strftime('%Y-%m-%d')}-{sanitize_url(title)}"
     file_name = f"docs/_posts/{sanitized_title}.markdown"
     with open(file_name, "w") as f:
-        front = """---
-layout:     post
-title:      {title}
-date:       {date}
-author:     Flûteur ({model})
-categories: {categories}
----
-""".format(
-            title=title,
-            date=now.strftime("%Y-%m-%d %H:%M:%S %z"),
-            categories=prompt["categories"],
-            model=MODEL,
-        )
+        front = "---\n" + yaml.safe_dump(
+            {
+                "layout": "post",
+                "title": title,
+                "date": now.strftime("%Y-%m-%d %H:%M:%S %z"),
+                "author": f"Flûteur ({MODEL})",
+                "categories": prompt["categories"],
+            },
+            allow_unicode=True,
+            sort_keys=False,
+        ) + "---\n"
         f.write(front + body_md)
 
     # if --commit, commit change on a new branch
