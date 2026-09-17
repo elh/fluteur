@@ -52,7 +52,17 @@ def main():
         # TODO: actually approve pull request via event="APPROVE". currently,
         # cannot approve own PRs while using default github action token
         pull.create_review(body=body, event="COMMENT")
-        pull.merge(commit_title=f"Merge pull request #{pull.number}: {pull.title}")
+        result = pull.merge(
+          commit_title=f"Merge pull request #{pull.number}: {pull.title}"
+        )
+        if not result.merged:
+          raise RuntimeError(f"Could not merge PR #{pull.number}: {result.message}")
+        # A merge using GITHUB_TOKEN does not trigger a Pages build on its own.
+        # Record each successful merge so the workflow can rebuild even if a
+        # later review fails.
+        if output_file := os.getenv("GITHUB_OUTPUT"):
+          with open(output_file, "a") as f:
+            f.write("merged=true\n")
       elif 'Reject' in recommendation:
         pull.create_review(body=body, event="COMMENT")
         pull.edit(state="closed")

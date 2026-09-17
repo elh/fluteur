@@ -5,6 +5,11 @@ on:
     # Use the same active weeks as the writer, one day later.
     - cron: '0 16 * * 2'
   workflow_dispatch:
+    inputs:
+      rebuild_only:
+        description: Rebuild the current site without reviewing poems
+        type: boolean
+        default: false
 
 jobs:
   review:
@@ -13,21 +18,28 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      pages: write
     steps:
     - uses: actions/checkout@v7
     - name: Check fortnightly cadence
       id: cadence
       run: python3 cadence.py >> "$GITHUB_OUTPUT"
     - uses: actions/setup-python@v7
-      if: steps.cadence.outputs.run == 'true'
+      if: steps.cadence.outputs.run == 'true' && !inputs.rebuild_only
       with:
         python-version: '3.11'
     - name: Install
-      if: steps.cadence.outputs.run == 'true'
+      if: steps.cadence.outputs.run == 'true' && !inputs.rebuild_only
       run: pip install -r requirements.txt
     - name: Review
-      if: steps.cadence.outputs.run == 'true'
+      id: review
+      if: steps.cadence.outputs.run == 'true' && !inputs.rebuild_only
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: python review.py --merge
+    - name: Request Pages build
+      if: ${{ !cancelled() && (steps.review.outputs.merged == 'true' || inputs.rebuild_only) }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"

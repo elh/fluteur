@@ -9,7 +9,9 @@ Flûteur is an early experiment in procedural generation of websites and collabo
 
 The cadence is anchored to September 21–22, 2026, then October 5–6, and every 14 days afterward. GitHub checks the schedule weekly; `cadence.py` skips setup and model calls on alternate weeks. Both jobs share this date check so they stay aligned across month and year boundaries. Manual runs bypass the cadence check.
 
-On a cadence, a scheduled Action runs `write.py` opening a PR to add a new poem, then another scheduled Action runs `review.py`. If the poem passes the review, it is merged and automatically built and deployed to the Pages site; otherwise, the PR is closed.
+On a cadence, a scheduled Action runs `write.py` opening a PR to add a new poem, then another scheduled Action runs `review.py`. If the poem passes the review, it is merged; otherwise, the PR is closed. After any successful merges, the review workflow explicitly requests a GitHub Pages build to publish the updated site. This is necessary because merges made with `GITHUB_TOKEN` do not trigger Pages builds automatically. Normal pushes to `main` still deploy as before.
+
+To retry deployment without reviewing poems or calling OpenAI, manually run the **review** workflow with **rebuild_only** enabled. It rebuilds the current `main` branch using the existing workflow token and its `pages: write` permission; no additional secret is needed.
 
 Both scripts use GPT-6 Astra with low reasoning effort and a maximum of 8,192 completion tokens per call (including reasoning). The model is configured in `gpt_util.py`. Set `OPENAI_API_KEY` in a local `.env` file or the repository's Actions secrets; publishing also requires `GH_TOKEN` (the workflow uses `GITHUB_TOKEN`). Python 3.11 or newer is required.
 
