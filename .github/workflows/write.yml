@@ -2,6 +2,7 @@ name: write
 
 on:
   schedule:
+    # cadence.py skips alternate weeks; manual runs always proceed.
     - cron: '0 16 * * 1'
   workflow_dispatch:
     inputs:
@@ -19,12 +20,18 @@ jobs:
       pull-requests: write
     steps:
     - uses: actions/checkout@v7
+    - name: Check fortnightly cadence
+      id: cadence
+      run: python3 cadence.py >> "$GITHUB_OUTPUT"
     - uses: actions/setup-python@v7
+      if: steps.cadence.outputs.run == 'true'
       with:
         python-version: '3.11'
     - name: Install
+      if: steps.cadence.outputs.run == 'true'
       run: pip install -r requirements.txt
     - name: Write
+      if: steps.cadence.outputs.run == 'true'
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -38,7 +45,7 @@ jobs:
           python write.py --pull
         fi
     - uses: actions/upload-artifact@v7
-      if: inputs.preview
+      if: inputs.preview && steps.cadence.outputs.run == 'true'
       with:
         name: poem-preview
         path: /tmp/poem-preview/
